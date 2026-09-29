@@ -7,11 +7,10 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Hi"),
-      ),
+      appBar: AppBar(title: Text("Hi"),),
       body: Container(color: Colors.orangeAccent),
-      floatingActionButton: OutlinedButton(onPressed: (){}, child: Icon(Icons.add, color: const Color.fromRGBO(91, 176, 216, 1),)),
+      floatingActionButton: OutlinedButton(onPressed: (){}, 
+      child: Icon(Icons.add, color: const Color.fromRGBO(91, 176, 216, 1),)),
     );
   }
 }

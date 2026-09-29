@@ -1,4 +1,5 @@
 import 'package:aula01/home.dart';
+import 'package:aula01/home2.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(),
+      home: const MyHomePage2(),
     );
   }
 }
