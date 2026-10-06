@@ -1,5 +1,3 @@
-import 'package:aula01/home.dart';
-import 'package:aula01/home2.dart';
 import 'package:aula01/pages/chatList_page.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const ChatlistPage(),
+      home: ChatlistPage(),
     );
   }
 }
