@@ -1,3 +1,6 @@
+import 'package:aula01/domain/conversa.dart';
+import 'package:aula01/infra/conversa_repository.dart';
+import 'package:aula01/pages/chatList_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -6,10 +9,29 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Hi"),),
-      body: Container(color: Colors.orangeAccent),
-      floatingActionButton: OutlinedButton(onPressed: (){}, 
-      child: Icon(Icons.add, color: const Color.fromRGBO(91, 176, 216, 1),)),
+      appBar: AppBar(title: Text("PDM"),),
+      body: Column(
+        children: [
+          Text("Módulos"),
+          Expanded(
+            child: ListView(
+              //redirecionamento do chat?
+              // Já que a lista de chats estará aqui...?
+              children: [
+                ListTile(
+                  title: Text("Chat"),
+                  trailing: IconButton(onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChatlistPage()),
+                    );
+                  }, icon: Icon(Icons.arrow_forward)),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
