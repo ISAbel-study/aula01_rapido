@@ -1,4 +1,4 @@
-
+//Apenas a classe "Conversa"
 class Conversa {
   String contato;
   String ultimaMsg;
