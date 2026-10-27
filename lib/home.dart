@@ -1,6 +1,4 @@
-import 'package:aula01/domain/conversa.dart';
-import 'package:aula01/infra/conversa_repository.dart';
-import 'package:aula01/pages/chatList_page.dart';
+import 'package:aula01/features/chat/presentation/pages/conversa_list_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -9,30 +7,39 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("PDM"),),
+      appBar: AppBar(title: Text('TADS IV')),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Módulos"),
-          Expanded(
-            child: ListView(
-              //redirecionamento do chat?
-              // Já que a lista de chats estará aqui...?
-              children: [
-                ListTile(
-                  title: Text("Chat"),
-                  trailing: IconButton(onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ChatlistPage()),
-                    );
-                  }, icon: Icon(Icons.arrow_forward)),
-                )
-              ],
-            ),
+          Padding(
+            padding: const EdgeInsets.all(14.0),
+            child: Text('Módulos', style: TextStyle(fontSize: 16)),
+          ),
+          ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            children: [
+              Card(
+                elevation: 0.5,
+                child: ListTile(
+                  title: Text('Chat'),
+                  trailing: IconButton(
+                    icon: Icon(Icons.arrow_forward),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ConversaListPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 }
-
