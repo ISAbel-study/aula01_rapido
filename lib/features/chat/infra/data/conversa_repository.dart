@@ -18,4 +18,6 @@ class ConversaRepository {
       naoLidas: 10,
     ),
   ];
+
+  void adiciona(Conversa conversa) => conversas.add(conversa);
 }

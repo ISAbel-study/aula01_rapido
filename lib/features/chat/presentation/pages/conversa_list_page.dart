@@ -1,13 +1,12 @@
 import 'package:aula01/features/chat/domain/entities/conversa.dart';
-import 'package:aula01/features/chat/infra/data/conversa_repository.dart';
 import 'package:aula01/features/chat/presentation/bloc/conversa_list_bloc.dart';
+import 'package:aula01/features/chat/presentation/bloc/conversa_list_event.dart';
 import 'package:aula01/features/chat/presentation/bloc/conversa_list_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ConversaListPage extends StatelessWidget {
-  final ConversaRepository repo = ConversaRepository();
-  ConversaListPage({super.key});
+  const ConversaListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +20,15 @@ class ConversaListPage extends StatelessWidget {
             if (state is ConversaListSucess) {
               //
               return ListView.builder(
-                  itemCount: repo.conversas.length,
+                  itemCount: state.conversas.length,
                   itemBuilder: (BuildContext context, int i) {
-                    Conversa conversa = repo.conversas[i];
+                    Conversa conversa = state.conversas[i];
                     return ListTile(
+                      onTap: () {
+                        context.read<ConversaListBloc>().add(
+                          ConversaListDuplicaConversa(conversa: conversa),
+                        );
+                      },
                       title: Text(conversa.contato),
                       subtitle: Text(conversa.ultimaMsg),
                       leading: CircleAvatar(
@@ -46,16 +50,32 @@ class ConversaListPage extends StatelessWidget {
                 );
             }
             if (state is ConversaListFailure) {
-              //
-
+              //retorno da falha
+               return Column(
+                //column recebe mais de um elemento = children
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(child: Text("(${state.mensg})", style: TextStyle(fontSize: 16))
+                  )],
+              );
             }
-            return CircularProgressIndicator();
+
+            return Column(
+              //column recebe mais de um elemento = children
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: CircularProgressIndicator()
+              )],
+            );
         },
       ),
     ),
     );
   }
 }
+
+//click no elemento -> cria um novo elemento -> carrega com todos os elementos
 
 /* ListView.builder(
         itemCount: repo.conversas.length,
