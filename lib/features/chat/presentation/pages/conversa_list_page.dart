@@ -19,7 +19,7 @@ class ConversaListPage extends StatelessWidget {
 
             if (state is ConversaListSucess) {
               //
-              return ListView.builder(
+              return ListView.builder( //constrói a lista de acordo com os dados de forma dinâmica
                   itemCount: state.conversas.length,
                   itemBuilder: (BuildContext context, int i) {
                     Conversa conversa = state.conversas[i];

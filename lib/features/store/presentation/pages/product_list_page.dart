@@ -21,35 +21,44 @@ class ProductListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Catálogo de Produtos"), ), //colocar ícone dps
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(14),
-          ),
+      appBar: AppBar(
+        title: const Text("Catálogo de Produtos"),
+      ), //colocar ícone dps, colocar cor dps
+      body:
           ListView(
             padding: EdgeInsets.symmetric(horizontal: 10),
             children: [
               Card( 
-                child: ListTile(
+                child: ListTile( //junto com leading(icone ou img pequena), title, subtitle, trailing, onTap
+                  leading: Image.network(
+                    'https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp',
+                    width: 70,
+                    height: 70,
+                    fit: BoxFit.cover,
+                  ),//leading - img pequena
                   title: Text("nome do produto"),
                   subtitle: Column( //dentro de subtitle vem uma Column
                     children: [
-                      Text("categoria do produto")
+                      Text("categoria do produto"),
+                      Text("RS 9.99"),
+                      //inserir Row para as avaliações
                     ],
-                  ), 
+                  ),
+                  trailing: Icon(Icons.chevron_right),
                 ),
               )
             ],
           ),
-        ],
-      ),
-    );
+      );
   }
 }
 
-
+ /*Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(14),
+          ),*/
 
 
 
