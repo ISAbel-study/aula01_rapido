@@ -41,6 +41,7 @@ class ProductListPage extends StatelessWidget {
                     children: [
                       Text("categoria do produto"),
                       Text("RS 9.99"),
+                      Text("chayeonnn"),
                       //inserir Row para as avaliações
                     ],
                   ),
