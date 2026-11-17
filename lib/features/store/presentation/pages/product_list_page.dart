@@ -30,19 +30,26 @@ class ProductListPage extends StatelessWidget {
             children: [
               Card( 
                 child: ListTile( //junto com leading(icone ou img pequena), title, subtitle, trailing, onTap
+
                   leading: Image.network(
                     'https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp',
                     width: 70,
                     height: 70,
                     fit: BoxFit.cover,
                   ),//leading - img pequena
-                  title: Text("nome do produto"),
+                  title: Text("nome do produto", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                   subtitle: Column( //dentro de subtitle vem uma Column
+                    crossAxisAlignment: CrossAxisAlignment.start, //para alinhar os textos à esquerda
                     children: [
                       Text("categoria do produto"),
-                      Text("RS 9.99"),
-                      Text("chayeonnn"),
-                      //inserir Row para as avaliações
+                      //inserir Row para preço + avaliações
+                      Row(
+                        children: [
+                          Text("RS 9.99"),
+                          SizedBox(width: 10), //espaço entre o preco e a avaliação
+                          Text("4.5"),
+                        ],
+                      )
                     ],
                   ),
                   trailing: Icon(Icons.chevron_right),
